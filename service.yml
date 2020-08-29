@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: plateformejtlsec
+spec:
+  selector:
+    app: plateformejtlsec
+  ports:
+  - protocol: TCP
+    port: 8085
+    targetPort: 8080
+  type: LoadBalancer
