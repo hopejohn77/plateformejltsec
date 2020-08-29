@@ -1,24 +1,20 @@
 pipeline{
   agent any
     stages{
-      stage('build'){
+      stage('build to docker image'){
         steps{
-        sh '/home/maven/bin/maven clean install'
+        sh 'docker build -t . userpfe/hopejohnhub:jltsec1.0.2'
         }
        }
-      stage('test'){
+      stage('dockerhub push'){
         steps{
-       sh '/home/maven/bin/maven test'
+       sh 'docker push userpfe/hopejohnhub:jltsec1.0.2'
         }
        }
-     stage('delivery'){
+     stage('deploy to k8s'){
         steps{
-       sh '/home/maven/bin/maven validate'
-        }
-       }
-     stage('deploy'){
-        steps{
-       sh  '/home/maven/bin/maven deploy'
+       sh 'chmod +x changeTag.sh'
+       sh './changeTag.sh jltsec1.0.2'
         }
        }
     }
