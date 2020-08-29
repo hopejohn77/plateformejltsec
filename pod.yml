@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: plateformejtsec
+  labels:
+    app: plateformejltsec
+spec:
+  containers:
+    - name: nodeapp
+      image: userpfe/hopejohn:jtlsec1.0.1
+      ports:
+        - containersPort: 8080
