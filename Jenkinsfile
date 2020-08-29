@@ -13,8 +13,6 @@ pipeline{
        }
      stage('deploy to k8s'){
         steps{
-       sh 'chmod +x changeTag.sh'
-       sh './changeTag.sh jltsec1.0.2'
         }
        }
     }
