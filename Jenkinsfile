@@ -1,7 +1,7 @@
 pipeline{
   agent{
-    def registryProjet='https://hub.docker.com/userpfe/hopejohnhub/nginxpfe'
-    def registryProjet='https://hub.docker.com/userpfe/hopejohnhub/mysqlpfe'
+    def registryProjet='https://registry.gitlab.com/hopejohn/plateformejltsecpfe/nginxpfe'
+    def registryProjet='https://registry.gitlab.com/hopejohn/plateformejltsecpfe/mysqlpfe'
     
     def IMAGE1="${registryProjet}:nginxpfe-${env.BUILD1_ID}"
     def IMAGE2="${registryProjet}/home/espoir/PFE/service_bdd:mysqlpfe-${env.BUILD2_ID}"
@@ -25,7 +25,7 @@ pipeline{
       } 
       stage('push'){
         step{  
-        docker.withRegistry('https://hub.docker.com', 'registry-server-git')
+        docker.withRegistry('https://registry.gitlab.com', 'registry-server-git')
             img1.push()
            }
           }
@@ -40,7 +40,7 @@ pipeline{
       }
       stage('push'){
         step{
-          docker.withRegistry('https://hub.docker.com', 'registry-server-git')
+          docker.withRegistry('https://registry.gitlab.com', 'registry-server-git')
             img2.push()
            }
           }
