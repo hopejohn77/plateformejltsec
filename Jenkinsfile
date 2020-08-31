@@ -4,7 +4,7 @@ pipeline{
     def registryProjet='https://registry.gitlab.com/hopejohn/plateformejltsecpfe/mysqlpfe'
     
     def IMAGE1="${registryProjet}:nginxpfe-${env.BUILD1_ID}"
-    def IMAGE2="${registryProjet}/home/espoir/PFE/service_bdd:mysqlpfe-${env.BUILD2_ID}"
+    def IMAGE2="${registryProjet}:mysqlpfe-${env.BUILD2_ID}"
       
     def img1 = stage('Build') {
         docker.build("$IMAGE1", '.')
