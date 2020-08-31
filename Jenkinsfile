@@ -1,6 +1,5 @@
 pipeline{
-  agent any
-  
+  agent{
     def registryProjet='https://hub.docker.com/userpfe/hopejohnhub/nginxpfe'
     def registryProjet='https://hub.docker.com/userpfe/hopejohnhub/mysqlpfe'
     
@@ -13,6 +12,7 @@ pipeline{
     def img2 = stage('Build') {
         docker.build("$IMAGE2", '.')
       }
+  }
   stages{
     
       stage('test du service web'){
